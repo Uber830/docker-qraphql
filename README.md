@@ -1,3 +1,82 @@
+# Docker GraphQL API
+
+This project is a GraphQL API built with NestJS, designed for learning and experimentation with Dockerized Node.js applications. It includes a simple todo management system and a hello-world example.
+
+## Features
+- GraphQL API with NestJS
+- Todo CRUD operations
+- Docker support for easy deployment
+- Modular code structure
+
+## Getting Started
+
+### Prerequisites
+- Docker
+- Node.js (if running locally)
+
+### Setup
+
+#### Using Docker
+1. Build the Docker image:
+  ```bash
+  docker build -t docker-graphql .
+  ```
+2. Run the container:
+  ```bash
+  docker run -p 3000:3000 docker-graphql
+  ```
+
+#### Local Development
+1. Install dependencies:
+  ```bash
+  npm install
+  ```
+2. Start the server:
+  ```bash
+  npm run start
+  ```
+
+## Usage
+
+Once running, access the GraphQL playground at [http://localhost:3000/graphql](http://localhost:3000/graphql).
+
+### Example Query
+```graphql
+query {
+  todos {
+   id
+   title
+   status
+  }
+}
+```
+
+## Project Structure
+
+```
+src/
+  app.module.ts         # Main NestJS module
+  main.ts               # Application entry point
+  schema.gql            # GraphQL schema
+  hello-world/          # Hello world example module
+  todo/                 # Todo feature module
+   todo.module.ts
+   todo.resolver.ts
+   todo.service.ts
+   dto/                # Data transfer objects
+   entity/             # Todo entity definition
+   types/              # Custom GraphQL types
+test/                   # End-to-end tests
+Dockerfile              # Docker configuration
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is for educational purposes.
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -58,16 +137,3 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
