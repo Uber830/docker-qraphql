@@ -27,10 +27,10 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t uberman385/docker-graphql-action:0.0.1 .
+        docker build -t uberman385/docker-graphql:0.0.1 .
 
     - name: Push Docker Image
       run: |
-        docker push uberma385/docker-graphql-action:0.0.1
+        docker push uberma385/docker-graphql:0.0.1
 #   - name: Build the Docker image
 #     run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
