@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
+const NameApp = process.env.NAME_APP || '';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -12,8 +13,8 @@ async function bootstrap() {
     })
   );
 
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
   
-  console.log('Aplicación corriendo en puerto: ', 3000 );
+  console.log(`Aplicación ${NameApp} corriendo en puerto: ${3000}`);
 }
 bootstrap();
