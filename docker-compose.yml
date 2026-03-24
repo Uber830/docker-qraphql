@@ -1,0 +1,39 @@
+name: my-app
+
+services:
+  web1:
+    container_name: web1-0.1.0
+    build: .
+    ports:
+      - "3010:3000"
+    environment:
+      - NAME_APP=web1
+  
+  web2:
+    container_name: web2-0.1.0
+    build: .
+    ports:
+      - "3020:3000"
+    environment:
+      - NAME_APP=web2
+    
+  web3:
+    container_name: web3-0.1.0
+    build: .
+    ports:
+      - "3030:3000"
+    environment:
+      - NAME_APP=web3
+
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - web1
+      - web2
+      - web3
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./nginx/config.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
